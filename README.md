@@ -1,4 +1,4 @@
-# Automated Weather System WebApp
+# AWS-GroupB-IoT
 
 ### Project Description
  \-

@@ -76,8 +76,8 @@ function Navbar() {
         
         <section className="mt-20 flex justify-between items-center flex-col gap-1">
           {NavBtns.map((btn, index) => (
-            <Link to={btn.link}>
-            <button
+            <Link
+            to={btn.link}
               key={index}
               className="w-[80%] group-hover:w-[90%] group-hover:border group-hover:border-white group-hover:border-opacity-30 flex flex-row items-center gap-1 justify-center group focus:bg-[#9E7FA9] focus:bg-opacity-20 focus:border focus:border-white focus:border-opacity-30 group-focus:bg-transparent hover hover:bg-[#9E7FA9] hover:bg-opacity-20 hover:border hover:border-white hover:border-opacity-30"
               onFocus={btn.onFocus}
@@ -96,7 +96,6 @@ function Navbar() {
               <p className="text-white text-opacity-50 focus:text-opacity-100 text-xl hidden group-hover:block group-hover:justify-center font-semibold">
                 {btn.title}
               </p>
-            </button>
             </Link>
           ))}
         </section>

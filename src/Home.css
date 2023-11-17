@@ -1,64 +1,71 @@
-.Home {
-  text-align: center;
+*{
+    margin: 0;
+    box-sizing:border-box;
+    font-family: sans-serif;
 }
 
-.Home-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .Home-logo {
-    animation: Home-logo-spin infinite 20s linear;
-  }
-}
-
-.Home-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.Home-link {
-  color: #61dafb;
-}
-
-@keyframes Home-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.Home-section {
+.page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     padding: 50px;
-    margin: 0px 200px;
-    display: flex;
 }
 
-.section-split2 {
-    margin: 30px 10px;
-    float: left;
-    width: 50%;
+.login {
     display: flex;
+    flex-direction: column;
+    max-width: 360px; 
+    color: #C5A4D5;
 }
 
-.Home-footer {
-  /* width: 100%; */
-  height: 100px;
-  padding: 0px 100px 0px 0px;
-  background-color: #282c34;
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.title {
+    display: flex;
+    font-width: 50px;
+}
+
+.login input {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    
+}
+
+.input-box{
+    margin-top: 20px;
+    width: 80%;
+    border-bottom: 1px solid #813DAE;
+}
+
+.input-box input{
+    width: 90%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #C5A4D5;
+}
+
+::placeholder{
+    color: #C5A4D5;
+}
+
+.btn{
+    margin: 40px auto 20px;
+    width: 10%;
+    display: block;
+    outline: none;
+    padding: 5px;
+    border: 3px solid #fff;
+    cursor: pointer;
+    background: transparent;
+    color: #C5A4D5;
+    font-size: 16px;
+    position: absolute;
+    left: 130px;
+}
+
+body{
+    background: linear-gradient(69.4deg, #000000, #71318F);
 }

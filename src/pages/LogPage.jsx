@@ -1,5 +1,6 @@
 import React from "react";
 import "./loginpage.css"
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
     return (
@@ -18,8 +19,8 @@ const LoginPage = () => {
                 <input type="password" placeholder="Password"/>
             </div>
 
-            <div>
-                <button type="button" class="btn">LOG IN</button>
+            <div class="logbutton">
+                <Link to={/dashboard}  type="button" class="btn">LOG IN </Link>
             </div>
 
         </div>

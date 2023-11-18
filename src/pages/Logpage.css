@@ -21,11 +21,6 @@
     color: #C5A4D5;
 }
 
-.title {
-    display: flex;
-    font-width: 50px;
-}
-
 .login input {
     display: block;
     width: 100%;

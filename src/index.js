@@ -4,7 +4,6 @@ import './index.css';
 import Dashboard from './pages/Dashboard';
 import Home from './Home';
 import SignUp from './pages/SignUp';
-import Authentication from './components/Authentication';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -24,10 +23,6 @@ const router = createBrowserRouter([
   {
     path: "SignUp",
     element: <SignUp />,
-  },
-  {
-    path: "auth",
-    element: <Authentication />,
   },
 ]);
 

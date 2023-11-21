@@ -1,6 +1,5 @@
 import React from "react";
 import "./loginpage.css";
-import Authentication from "../components/Authentication";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {

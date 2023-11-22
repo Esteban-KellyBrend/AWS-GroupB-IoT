@@ -9,7 +9,7 @@ function Navbar() {
     {
       title: "Home",
       iconn: "iconamoon:home-bold",
-      link: "#",
+      link: "/Dashboard",
     },
     {
       title: "Statistics",
@@ -26,7 +26,12 @@ function Navbar() {
     {
       title: "About",
       iconn: "mdi:information-outline",
-      link: "#",
+      link: "/About",
+    },
+    {
+      title: "Sign Out",
+      iconn: "mdi:sign-out",
+      link: "/",
     },
   ];
 

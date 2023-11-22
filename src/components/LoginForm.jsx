@@ -39,7 +39,7 @@ const LoginForm = () => {
             </div>
 
             <div className="ml-2">
-                <button type="submit" className="btn w-80 border-4 border-[#C5B5CF] px-9 py-2 bg-transparent text-[#C5A4D5] text-xl ml-16">LOG IN</button>
+                <button type="submit" className="btn w-25 border-4 border-[#C5B5CF] px-9 py-2 bg-transparent text-[#C5A4D5] text-xl ml-16">LOG IN</button>
 
                 <p className="text-xs text-[#C5A4D5] mt-12 justify-normal ml-14">
                     Not Yet Registered?&nbsp;

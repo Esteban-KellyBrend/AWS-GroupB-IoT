@@ -40,8 +40,8 @@ const Display = ({ type, name, meas, unit, loc, time, date, direction }) => {
           className="w-[15%] absolute -mt-10"
         />
         <img
-          src="https://scontent.fmnl5-2.fna.fbcdn.net/v/t1.15752-9/400384610_872959207877753_3998345074336852813_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGizOlrM36FIoANyYEQpHfUz748gCfHC5DPvjyAJ8cLkAya-dT5T6GX31AleJ0z3LurT6FJOCPIcemeWFHvojIT&_nc_ohc=MyENonbBHPIAX9fxAmN&_nc_ht=scontent.fmnl5-2.fna&oh=03_AdTToVDuPEAGuR3Xbj_qpswR4Q62CY15JBq4CzcvkFc_nA&oe=6582A065"
-          className="w-[15%] absolute -mt-10"
+          src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/375754561_1356953538275639_4269922165700191771_n.png?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEhxlsagpYNomRC_NWyOkZ3cr91fCS1lGdyv3V8JLWUZ0VBw_GU7SyghKinU03LbCMmUOPgrMCDGkLkmc8g3MOz&_nc_ohc=RnrL0C0tn1gAX8q_xu0&_nc_ht=scontent.fmnl4-1.fna&oh=03_AdRPIawjggMcWc2jvYH6swLo0Lb4JL-471qWnbYSveaJHQ&oe=6582DFB5"
+          className="w-[15%] absolute -mt-10 -rotate-[48deg]"
         />
         <div className=" flex flex-row text-white text-2xl w-full justify-center mt-[80%]">
           <p >{meas}</p>

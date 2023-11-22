@@ -1,6 +1,7 @@
 import React from "react";
 // import "./Home.css";
 import { Link } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
 
 const Home = () => {
     return (
@@ -13,23 +14,8 @@ const Home = () => {
                     <h4 className="font-bold text-1.5xl mt-3">Caloocan</h4>
                 </div>
 
-                <div className="input-box mt-16 w-80 border-b-4 border-[#813DAE]">
-                    <input type="text" className="w-90 border-none outline-none bg-transparent text-[#C5A4D5] text-2xl placeholder-[#C5A4D5]" placeholder="Username" />
-                </div>
+                <LoginForm />
 
-                <div className="input-box mt-11 mb-16 w-80 border-b-4 border-[#813DAE]">
-                    <input type="password" className="w-90 border-none outline-none bg-transparent text-[#C5A4D5] text-2xl placeholder-[#C5A4D5] " placeholder="Password" />
-                </div>
-
-                <div className="ml-2">
-                    {/* Use to="/dashboard" instead of to={/dashboard} */}
-                    <Link to="/dashboard" class="btn w-80 border-4 border-[#C5B5CF] px-9 py-2 bg-transparent text-[#C5A4D5] text-xl ml-16">LOG IN</Link>
-
-                    <p className="text-xs text-[#C5A4D5] mt-12 justify-normal ml-14">
-                        Not Yet Registered?&nbsp;
-                        <Link to="/signup" class="underline bg-transparent text-[#C5A4D5] text-xs">Click Here</Link>
-                    </p>
-                </div>
             </div>
         </div>
     );

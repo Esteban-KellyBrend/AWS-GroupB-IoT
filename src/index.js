@@ -4,11 +4,13 @@ import './index.css';
 import Dashboard from './pages/Dashboard';
 import Home from './Home';
 import SignUp from './pages/SignUp';
+import WindSpeedStats from './pages/statistics/WindSpeedStats';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "SignUp",
     element: <SignUp />,
+  },
+  {
+    path: "WindSpeedStats",
+    element: <WindSpeedStats />,
   },
 ]);
 

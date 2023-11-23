@@ -51,9 +51,9 @@ const SignUp = () => {
                     <input type="text" className="w-90 border-none outline-none bg-transparent placeholder-[#C5A4D5] text-[#C5A4D5] text-2xl" placeholder="Last Name" />
                 </div>
 
-                <div className="input-box mt-11 mx-auto w-80 border-b-4 border-[#813DAE]">
+                {/* <div className="input-box mt-11 mx-auto w-80 border-b-4 border-[#813DAE]">
                     <input type="text" className="w-90 border-none outline-none bg-transparent placeholder-[#C5A4D5] text-[#C5A4D5] text-2xl" placeholder="Username" />
-                </div>
+                </div> */}
 
                 <div className="input-box mt-11 mx-auto w-80 border-b-4 border-[#813DAE]">
                     <input type="text" onChange={(e) => setEmail(e.target.value)} className="w-90 border-none outline-none bg-transparent placeholder-[#C5A4D5] text-[#C5A4D5] text-2xl" placeholder="Email" />
@@ -64,7 +64,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="text-center">
-                    <button type="submit" className="btn w-80 border-4 border-[#C5B5CF] px-9 py-2 bg-transparent text-[#C5A4D5] text-xl ">SIGN UP</button>
+                    <button type="submit" className="btn w-50 border-4 border-[#C5B5CF] px-9 py-2 bg-transparent text-[#C5A4D5] text-xl ">SIGN UP</button>
 
                     <p className="text-xs text-[#C5A4D5] mt-16 justify-normal text-center">
                         Already registered?&nbsp;

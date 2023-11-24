@@ -4,20 +4,19 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   const [showWow, setShowWow] = useState(false);
-
+  
   const NavBtns = [
     {
       title: "Home",
       iconn: "iconamoon:home-bold",
       link: "/Dashboard",
-      onMouseEnter: () => setShowWow(false)
+      onMouseEnter: () => setShowWow(false),
     },
     {
       title: "Statistics",
       iconn: "mdi:graph-line",
       link: "#",
-
-      onMouseEnter: () => setShowWow(true),
+      onMouseEnter: () => setShowWow(true)
     },
     {
       title: "Hardware",

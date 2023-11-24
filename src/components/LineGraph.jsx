@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -18,11 +17,11 @@ ChartJS.register(
   Filler
 )
 
-function LineGraph() {
-  const data = {
-    labels: ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6"],
+function LineGraph({ data, labels }) {
+  const graphData = {
+    labels: labels,
     datasets: [{
-      data: [8, 9, 7, 12.5, 12, 13],
+      data: data,
       backgroundColor: (context) => {
         const bgColor = [
           'rgba(255, 255, 255, 1)', // White
@@ -31,13 +30,13 @@ function LineGraph() {
           'rgba(192, 192, 192, 0.6)',
           'rgba(192, 192, 192, 0.3)',
           'rgba(192, 192, 192, 0)' // Fully transparent gray
-        ]; // Plot points color
+        ];
 
         if (!context.chart.chartArea) {
           return;
         }
 
-        const { ctx, chartArea: {top, bottom} } = context.chart;
+        const { ctx, chartArea: { top, bottom } } = context.chart;
         const gradientBg = ctx.createLinearGradient(0, top, 0, bottom);
         const colorTranches = 1 / (bgColor.length - 1);
 
@@ -53,41 +52,38 @@ function LineGraph() {
       pointBorderWidth: 1,
       tension: 0.5,
       fill: true
-      
     }]
   };
 
   const options = {
     plugins: {
-      legend: false // false
+      legend: false
     },
     scales: {
       x: {
         grid: {
-          display: false 
+          display: false
         }
       },
       y: {
-        min: 2,
-        max: 15,
+        min: Math.min(...data) - 1,
+        max: Math.max(...data) + 1,
         ticks: {
-          stepSize: 1, //interval sa y axis
-          callback: (value) => value + 'hehe'
+          stepSize: 1,
+          callback: (value) => value + ' kph'
         },
         grid: {
-          borderDash: [10]
+          borderDash: [20]
         }
       }
     },
-    
   };
 
   return (
-    <div style={{ width: '1098px', height: '500px', marginLeft: '20PX' }}>
-      <Line data={data} options={options}></Line>
+    <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1" style={{ width: '1350px', height: '200px', marginLeft: '150px', marginTop: '40px' }}>
+      <Line data={graphData} options={options}></Line>
     </div>
   );
-
 }
 
 export default LineGraph;

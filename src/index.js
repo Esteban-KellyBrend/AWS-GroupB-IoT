@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import Home from './Home';
 import SignUp from './pages/SignUp';
 import WindSpeedStats from './pages/statistics/WindSpeedStats';
+import About from './pages/About';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "SignUp",
     element: <SignUp />,
+  },
+  {
+    path: "About",
+    element: <About />,
   },
   {
     path: "WindSpeedStats",

@@ -8,7 +8,7 @@ import Time from "../components/Time";
 function Dashboard() {
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
-      <Navbar className="z-50 absolute" style={{ zIndex: 50 }} />
+      <Navbar />
       <section className="ml-[10vw] mr-[4vw] z-10 my-3">
         <Heading type={1} name={"MAIN DASHBOARD"} />
 

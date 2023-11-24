@@ -38,7 +38,7 @@ function Navbar() {
   const StatBtn = [
     {
       title: "Wind Speed",
-      link: "#",
+      link: "/WindSpeedStats",
     },
     {
       title: "Wind Direction",

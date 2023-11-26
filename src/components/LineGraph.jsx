@@ -6,7 +6,8 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  Filler
+  Filler,
+  Tooltip
 } from 'chart.js';
 
 ChartJS.register(
@@ -14,10 +15,20 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  Filler
+  Filler,
+  Tooltip
 )
 
-function LineGraph({ data, labels }) {
+  /*
+   *
+   * Still need to include DATE for in the label
+   * when a data point is HOVERED
+   * 
+   * by: Bins
+   * 
+   */
+
+function LineGraph({ name, data, labels }) {
   const graphData = {
     labels: labels,
     datasets: [{
@@ -25,7 +36,7 @@ function LineGraph({ data, labels }) {
       backgroundColor: (context) => {
         const bgColor = [
           'rgba(255, 255, 255, 1)', // White
-          'rgba(255, 255, 255, 0.9)', // Light gray with some transparency
+          'rgba(255, 255, 255, 0.9)',
           'rgba(255, 255, 255, 0.8)',
           'rgba(192, 192, 192, 0.6)',
           'rgba(192, 192, 192, 0.3)',
@@ -51,19 +62,29 @@ function LineGraph({ data, labels }) {
       pointBorderColor: 'white',
       pointBorderWidth: 1,
       tension: 0.5,
-      fill: true
+      fill: true,
+      pointHoverRadius: 4,
+      pointHoverBorderWidth: 3,
+      pointHoverBackgroundColor: '#431857',
     }]
   };
 
   const options = {
     plugins: {
-      legend: false
+      legend: false,
+    },
+    layout: {
+      padding: {
+        left: 12, 
+      },
     },
     scales: {
       x: {
+        beginAtZero: true,
         grid: {
           display: false
-        }
+        },
+
       },
       y: {
         min: Math.min(...data) - 1,
@@ -75,13 +96,27 @@ function LineGraph({ data, labels }) {
         grid: {
           borderDash: [20]
         }
-      }
+
+      },
     },
   };
 
   return (
-    <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1" style={{ width: '1350px', height: '200px', marginLeft: '150px', marginTop: '40px' }}>
-      <Line data={graphData} options={options}></Line>
+    <div>
+      <section className="mt-3">
+        <div className="item-center">
+        <p className="text-white flex text-2xl text-opacity-70 ml-36 indent-2 font-bold">{name}</p>
+        </div>
+        <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1 mt-3"
+          style={{
+            width: '1350px',
+            height: '190px',
+            marginLeft: '150px',
+          }}>
+            
+          <Line data={graphData} options={options} width={'1350px'} height={'170px'}></Line>
+        </div>
+      </section>
     </div>
   );
 }

@@ -21,7 +21,7 @@ ChartJS.register(
 
   /*
    *
-   * Still need to include DATE for in the label
+   * Still need to include DATE in the label
    * when a data point is HOVERED
    * 
    * by: Bins

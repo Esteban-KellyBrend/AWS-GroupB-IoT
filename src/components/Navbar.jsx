@@ -45,27 +45,27 @@ function Navbar() {
     },
     {
       title: "Wind Direction",
-      link: "#",
+      link: "/WindDirectionStats",
     },
     {
       title: "Temperature",
-      link: "#",
+      link: "/TemperatureStats",
     },
     {
       title: "Humidity",
-      link: "#",
-    },
-    {
-      title: "Heat Index",
-      link: "#",
+      link: "/HumidityStats",
     },
     {
       title: "Solar Irradiance",
-      link: "#",
+      link: "/SolarIrradianceStats",
     },
     {
       title: "CO Value",
-      link: "#",
+      link: "/COValueStats",
+    },
+    {
+      title: "Precipitation",
+      link: "/PrecipitationStats",
     },
 
   ];

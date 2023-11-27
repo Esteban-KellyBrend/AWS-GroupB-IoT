@@ -75,50 +75,50 @@ const Display = ({ type, name, meas, unit, active, loc, time, date, direction })
       </div>
     </div>
   ) : type === 5 ? (
-   <div>
+    <div>
       <p className="text-white flex text-xl text-opacity-70 indent-3 mb-3">{name}</p>
       <div className="w-[20vw] h-[10vh] rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex items-center justify-end">
         <div>
-          <p className="flex text-white text-xs text-opacity-70 mb-12">{active}</p>           
+          <p className="flex text-white text-xs text-opacity-70 mb-12">{active}</p>
         </div>
         <div>
-          <p className="flex text-white text-xs text-opacity-70">{time}</p>           
-        </div>        
+          <p className="flex text-white text-xs text-opacity-70">{time}</p>
+        </div>
         <div className="flex items-center">
-          <Switch/>
+          <Switch />
         </div>
       </div>
     </div>
   ) : type === 6 ? (
     <div>
-       <p className="indent-3 mb-3"></p>
-       <section className="flex flex-row" >
-       <div className="w-[125vh] h-[20vh] rounded-2xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10">
-        <section className="flex flex-row">
-          <p className="text-white flex text-[3vw] text-2xl text-opacity-70 mr-1 m-7">{name}</p>
-          <p className="text-white flex text-[3vw] text-2xl text-opacity-70 ml-1 m-7">{unit}</p>  
-          <Hardware/>
-        </section >
-        <div className="flex flex-col ml-6">
-          <p className="flex text-white text-s text-opacity-70">{active}</p>
-          <p className="flex text-white text-xl text-opacity-70">{time}</p>
+      <p className="indent-3 mb-3"></p>
+      <section className="flex flex-row" >
+        <div className="w-[125vh] h-[20vh] rounded-2xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10">
+          <section className="flex flex-row">
+            <p className="text-white flex text-[3vw] text-2xl text-opacity-70 mr-1 m-7">{name}</p>
+            <p className="text-white flex text-[3vw] text-2xl text-opacity-70 ml-1 m-7">{unit}</p>
+            <Hardware />
+          </section >
+          <div className="flex flex-col ml-6">
+            <p className="flex text-white text-s text-opacity-70">{active}</p>
+            <p className="flex text-white text-xl text-opacity-70">{time}</p>
+          </div>
         </div>
-       </div>
       </section>
-     </div>
+    </div>
   ) : type === 7 ? (
     <div>
-       <p className="indent-3 mb-3"></p>  
-       <div className="w-[20vw] h-[9vh] rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10">
+      <p className="indent-3 mb-3"></p>
+      <div className="w-[20vw] h-[9vh] rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10">
         <section>
-        <div className="flex items-center">
-            <p className="text-white flex text-2xl text-opacity-70 indent-10 m-4">{name}</p>  
+          <div className="flex items-center">
+            <p className="text-white flex text-2xl text-opacity-70 indent-10 m-4">{name}</p>
             <p className="text-white flex text-2xl text-opacity-70 indent-10">{meas}</p>
-            <p className="text-white flex text-2xl text-opacity-70 indent-1">{unit}</p>  
-        </div>   
-        </section>  
+            <p className="text-white flex text-2xl text-opacity-70 indent-1">{unit}</p>
+          </div>
+        </section>
       </div>
-    </div>         
+    </div>
   ) : type === 8 ? (
     <div>
       <p className="text-white flex text-xl text-opacity-70 indent-3 pb-1">

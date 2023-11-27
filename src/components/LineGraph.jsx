@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -7,7 +6,8 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  Filler
+  Filler,
+  Tooltip
 } from 'chart.js';
 
 ChartJS.register(
@@ -15,29 +15,39 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  Filler
+  Filler,
+  Tooltip
 )
 
-function LineGraph() {
-  const data = {
-    labels: ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6"],
+  /*
+   *
+   * Still need to include DATE in the label
+   * when a data point is HOVERED
+   * 
+   * by: Bins
+   * 
+   */
+
+function LineGraph({ name, data, labels }) {
+  const graphData = {
+    labels: labels,
     datasets: [{
-      data: [8, 9, 7, 12.5, 12, 13],
+      data: data,
       backgroundColor: (context) => {
         const bgColor = [
           'rgba(255, 255, 255, 1)', // White
-          'rgba(255, 255, 255, 0.9)', // Light gray with some transparency
+          'rgba(255, 255, 255, 0.9)',
           'rgba(255, 255, 255, 0.8)',
           'rgba(192, 192, 192, 0.6)',
           'rgba(192, 192, 192, 0.3)',
           'rgba(192, 192, 192, 0)' // Fully transparent gray
-        ]; // Plot points color
+        ];
 
         if (!context.chart.chartArea) {
           return;
         }
 
-        const { ctx, chartArea: {top, bottom} } = context.chart;
+        const { ctx, chartArea: { top, bottom } } = context.chart;
         const gradientBg = ctx.createLinearGradient(0, top, 0, bottom);
         const colorTranches = 1 / (bgColor.length - 1);
 
@@ -52,42 +62,63 @@ function LineGraph() {
       pointBorderColor: 'white',
       pointBorderWidth: 1,
       tension: 0.5,
-      fill: true
-      
+      fill: true,
+      pointHoverRadius: 4,
+      pointHoverBorderWidth: 3,
+      pointHoverBackgroundColor: '#431857',
     }]
   };
 
   const options = {
     plugins: {
-      legend: false // false
+      legend: false,
+    },
+    layout: {
+      padding: {
+        left: 12, 
+      },
     },
     scales: {
       x: {
+        beginAtZero: true,
         grid: {
-          display: false 
-        }
+          display: false
+        },
+
       },
       y: {
-        min: 2,
-        max: 15,
+        min: Math.min(...data) - 1,
+        max: Math.max(...data) + 1,
         ticks: {
-          stepSize: 1, //interval sa y axis
-          callback: (value) => value + 'hehe'
+          stepSize: 1,
+          callback: (value) => value + ' kph'
         },
         grid: {
-          borderDash: [10]
+          borderDash: [20]
         }
-      }
+
+      },
     },
-    
   };
 
   return (
-    <div style={{ width: '1000px', height: '300px', marginLeft: '10PX' }}>
-      <Line data={data} options={options}></Line>
+    <div>
+      <section className="mt-3">
+        <div className="item-center">
+        <p className="text-white flex text-2xl text-opacity-70 ml-36 indent-2 font-bold">{name}</p>
+        </div>
+        <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1 mt-3"
+          style={{
+            width: '1350px',
+            height: '190px',
+            marginLeft: '150px',
+          }}>
+            
+          <Line data={graphData} options={options} width={'1350px'} height={'170px'}></Line>
+        </div>
+      </section>
     </div>
   );
-
 }
 
 export default LineGraph;

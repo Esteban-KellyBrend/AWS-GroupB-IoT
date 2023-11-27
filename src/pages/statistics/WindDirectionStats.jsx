@@ -14,7 +14,7 @@ function WindDirectionStats() {
       <div className="ml-40 mt-4 flex items-center">
       <section className="flex flex-row gap-[5rem]">
       <Display
-        type={5}
+        type={8}
         name={"TODAY"}
         meas={"48"}
         unit={"°"}
@@ -23,7 +23,7 @@ function WindDirectionStats() {
       />
 
       <Display
-        type={5}
+        type={8}
         name={"THIS WEEK"}
         meas={"48"}
         unit={"°"}

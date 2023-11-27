@@ -70,6 +70,28 @@ const Display = ({ type, name, meas, unit, loc, time, date, direction }) => {
         </div>
       </div>
     </div>
+  ) : type === 5 ? (
+    <div>
+      <p className="text-white flex text-xl text-opacity-70 indent-3 pb-1">
+        {name}
+      </p>
+      <div className="w-[40vw] h-[70vh] rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex flex-col items-center justify-center pt-1">
+        <img
+          src="https://scontent.fmnl5-2.fna.fbcdn.net/v/t1.15752-9/371527176_1491047998142200_8745244766900826020_n.png?_nc_cat=108&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHmw-laRW82USnloo--wRLSaWKW8GcRJ91pYpbwZxEn3QdNvP0VkoSGiuG1i75gD1MDayEbNvGH5dYJqQNp3RVi&_nc_ohc=0rqBccLBB4oAX-sonUt&_nc_ht=scontent.fmnl5-2.fna&oh=03_AdS55fwAFyGl_m27Vrvrica_JMTs7dhjsmwJjOvrk0s_ww&oe=6582A0ED"
+          className="w-[25%] absolute -mt-9"
+        />
+        <img
+          src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/375754561_1356953538275639_4269922165700191771_n.png?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEhxlsagpYNomRC_NWyOkZ3cr91fCS1lGdyv3V8JLWUZ0VBw_GU7SyghKinU03LbCMmUOPgrMCDGkLkmc8g3MOz&_nc_ohc=RnrL0C0tn1gAX8q_xu0&_nc_ht=scontent.fmnl4-1.fna&oh=03_AdRPIawjggMcWc2jvYH6swLo0Lb4JL-471qWnbYSveaJHQ&oe=6582DFB5"
+          className="w-[25%] absolute -mt-9 -rotate-[48deg]"
+        />
+        <div className=" flex flex-row text-white text-2xl w-full justify-center mt-[70%]">
+          <p >{meas}</p>
+          <p >{unit}</p>
+          <p className=" pl-2">{direction}</p>
+        </div>
+      </div>
+    </div>
+  
   ) : null; // Add this line to handle the case when type is not equal to 1 null // Add this line to handle the case when type is not equal to 1
 };
 

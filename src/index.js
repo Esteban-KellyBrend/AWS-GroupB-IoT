@@ -5,6 +5,12 @@ import Dashboard from './pages/Dashboard';
 import Home from './Home';
 import SignUp from './pages/SignUp';
 import WindSpeedStats from './pages/statistics/WindSpeedStats';
+import WindDirectionStats from './pages/statistics/WindDirectionStats';
+import TemperatureStats from './pages/statistics/TemperatureStats';
+import HumidityStats from './pages/statistics/HumidityStats';
+import SolarIrradianceStats from './pages/statistics/SolarIrradianceStats';
+import COValueStats from './pages/statistics/COValueStats';
+import PrecipitationStats from './pages/statistics/PrecipitationStats';
 import HardwareSettings from './pages/HardwareSettings';
 import About from './pages/About';
 import reportWebVitals from './reportWebVitals';
@@ -29,6 +35,34 @@ const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
+    path: "WindSpeedStats",
+    element: <WindSpeedStats />,
+  },
+  {
+    path: "WindDirectionStats",
+    element: <WindDirectionStats />,
+  },
+  {
+    path: "TemperatureStats",
+    element: <TemperatureStats />,
+  },
+  {
+    path: "HumidityStats",
+    element: <HumidityStats />,
+  },
+  {
+    path: "SolarIrradianceStats",
+    element: <SolarIrradianceStats />,
+  },
+  {
+    path: "COValueStats",
+    element: <COValueStats />,
+  },
+  {
+    path: "PrecipitationStats",
+    element: <PrecipitationStats />,
+  },
+  {
     path: "HardwareSettings",
     element: <HardwareSettings />,
   },
@@ -36,10 +70,7 @@ const router = createBrowserRouter([
     path: "About",
     element: <About />,
   },
-  {
-    path: "WindSpeedStats",
-    element: <WindSpeedStats />,
-  },
+ 
 ]);
 
 

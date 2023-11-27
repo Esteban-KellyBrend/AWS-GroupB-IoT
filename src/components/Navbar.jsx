@@ -4,20 +4,19 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   const [showWow, setShowWow] = useState(false);
-
+  
   const NavBtns = [
     {
       title: "Home",
       iconn: "iconamoon:home-bold",
       link: "/Dashboard",
-      onMouseEnter: () => setShowWow(false)
+      onMouseEnter: () => setShowWow(false),
     },
     {
       title: "Statistics",
       iconn: "mdi:graph-line",
       link: "#",
-
-      onMouseEnter: () => setShowWow(true),
+      onMouseEnter: () => setShowWow(true)
     },
     {
       title: "Hardware",
@@ -46,27 +45,27 @@ function Navbar() {
     },
     {
       title: "Wind Direction",
-      link: "#",
+      link: "/WindDirectionStats",
     },
     {
       title: "Temperature",
-      link: "#",
+      link: "/TemperatureStats",
     },
     {
       title: "Humidity",
-      link: "#",
-    },
-    {
-      title: "Heat Index",
-      link: "#",
+      link: "/HumidityStats",
     },
     {
       title: "Solar Irradiance",
-      link: "#",
+      link: "/SolarIrradianceStats",
     },
     {
       title: "CO Value",
-      link: "#",
+      link: "/COValueStats",
+    },
+    {
+      title: "Precipitation",
+      link: "/PrecipitationStats",
     },
 
   ];

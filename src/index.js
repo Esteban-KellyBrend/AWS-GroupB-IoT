@@ -11,6 +11,7 @@ import HumidityStats from './pages/statistics/HumidityStats';
 import SolarIrradianceStats from './pages/statistics/SolarIrradianceStats';
 import COValueStats from './pages/statistics/COValueStats';
 import PrecipitationStats from './pages/statistics/PrecipitationStats';
+import HardwareSettings from './pages/HardwareSettings';
 import About from './pages/About';
 import reportWebVitals from './reportWebVitals';
 import {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "PrecipitationStats",
     element: <PrecipitationStats />,
+  },
+  {
+    path: "HardwareSettings",
+    element: <HardwareSettings />,
   },
   {
     path: "About",

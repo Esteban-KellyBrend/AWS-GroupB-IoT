@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Display from "../components/Display";
 import Forecast from "../components/Forecast";
 import Heading from "../components/Heading";
@@ -16,27 +17,45 @@ function Dashboard() {
         <section className="flex flex-row gap-[5rem]">
           <section className="flex flex-col gap-2">
             <Time />
+              <Link to={"/SolarIrradianceStats"}>
             <Display
               type={1}
               name={"Solar Irradiance"}
               meas={34.8}
               unit={"W/m²"}
             />
+            </Link>
+              <Link to={"/PrecipitationStats"}>
             <Display type={1} name={"Precipitation"} meas={"96"} unit={"%"} />
+            </Link>
           </section>
 
           <section className="flex flex-col gap-2">
+            <Link to={"/TemperatureStats"}>
           <Temperature meas={69.2} />
+          </Link>
 
             <section className="flex flex-row gap-[5rem]">
+            <Link to={"/HumidityStats"}>
               <Display type={1} name={"Humidity"} meas={42.6} unit={"%"} />
+              </Link>
+              <Link to={"/HeatIndexStats"}>
               <Display type={1} name={"Heat Index"} meas={37.2} unit={"°C"} />
+              </Link>
+              
             </section>
             <section className="flex flex-row gap-[5rem]">
+            <Link to={"/COValueStats"}>
               <Display type={1} name={"CO Value"} meas={210} unit={"ppm"} />
+              </Link>
+
+              <Link to={"/WindSpeedStats"}>
               <Display type={1} name={"Wind Speed"} meas={420} unit={"kph"} />
+              </Link>
+              
             </section>
           </section>
+              <Link to={"/WindDirectionStats"}>
           <Display
             type={3}
             name={"Wind Direction"}
@@ -45,6 +64,7 @@ function Dashboard() {
             direction={" East of North"}
             className="z-0 relative"
           />
+          </Link>
         </section>
       </section>
     </div>

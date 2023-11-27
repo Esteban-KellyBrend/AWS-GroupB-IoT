@@ -14,7 +14,9 @@ function About() {
 
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
+      <div className="z-80">
       <Navbar />
+      </div>
       <section className="ml-[10vw] mr-[4vw] z-10 my-3">
         <Heading name={"ABOUT THE PROJECT"} />
         <div className="w-[34.6vw] h-[8vh] -rotate-90 left-0 top-0 -ml-[5.5vw] mt-[53.7vh] absolute text-white text-sm text-opacity-40">

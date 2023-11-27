@@ -71,7 +71,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="opacity-100 md:opacity-100 z-100 absolute flex flex-row group">
+    <div className="opacity-100 z-80 absolute flex flex-row group">
       <div
         onMouseEnter={() => setShowWow(false)}
         className="h-[100vh] w-[8vw] bg-transparent group hover:bg-black hover:w-[15vw] transition-all duration-200"
@@ -84,7 +84,7 @@ function Navbar() {
             </div>
           </div>
 
-          <section className="mt-20 flex justify-between items-center flex-col gap-1">
+          <section className="mt-20 flex justify-between items-center flex-col gap-1 z-50">
             {NavBtns.map((btn, index) => (
               <Link
                 to={btn.link}

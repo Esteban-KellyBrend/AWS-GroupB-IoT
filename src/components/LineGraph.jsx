@@ -83,7 +83,7 @@ function LineGraph() {
   };
 
   return (
-    <div style={{ width: '1098px', height: '500px', marginLeft: '20PX' }}>
+    <div style={{ width: '1000px', height: '300px', marginLeft: '10PX' }}>
       <Line data={data} options={options}></Line>
     </div>
   );

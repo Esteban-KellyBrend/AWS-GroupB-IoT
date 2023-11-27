@@ -6,6 +6,7 @@ import Home from './Home';
 import SignUp from './pages/SignUp';
 import WindSpeedStats from './pages/statistics/WindSpeedStats';
 import reportWebVitals from './reportWebVitals';
+import About from './pages/About'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "WindSpeedStats",
     element: <WindSpeedStats />,
+  },
+  {
+    path: "About",
+    element: <About />,
   },
 ]);
 

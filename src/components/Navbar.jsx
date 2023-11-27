@@ -22,7 +22,7 @@ function Navbar() {
     {
       title: "Hardware",
       iconn: "tabler:share",
-      link: "#",
+      link: "/HardwareSettings",
       onMouseEnter: () => setShowWow(false)
     },
     {

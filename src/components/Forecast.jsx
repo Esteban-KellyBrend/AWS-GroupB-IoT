@@ -46,11 +46,11 @@ function Forecast() {
   ];
 
   return (
-    <div className="mt-2 mb-4">
-      <p className="text-white flex text-xl text-opacity-70 pb-1 indent-3">
+    <div className="mt-2 mb-4 group">
+      <p className="text-white flex text-xl text-opacity-70 pb-1 indent-3 group-hover:font-semibold">
         Weather Condition
       </p>
-      <div className="w-full h-[22vh] rounded-2xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex flex-row justify-center items-center">
+      <div className="w-full h-[22vh] rounded-2xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex flex-row justify-center items-center group-hover:border-2  group-hover:bg-purple-700 group-hover:bg-opacity-10 group-hover:border-purple-900 group-hover:font-semibold">
         <section className="flex justify-around gap-1 p-1">
           {WForecast.map((Weath, index) => (
             <div key={index} className="w-[10vw] h-full rounded-xl flex flex-col justify-center items-center p-1">

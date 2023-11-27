@@ -17,7 +17,7 @@ function About() {
       <div className="z-80">
       <Navbar />
       </div>
-      <section className="ml-[10vw] mr-[4vw] absolute my-3">
+      <section className="ml-[10vw] mr-[4vw] z-10 my-3">
         <Heading name={"ABOUT THE PROJECT"} />
         <div className="w-[34.6vw] h-[8vh] -rotate-90 left-0 top-0 -ml-[5.5vw] mt-[53.7vh] absolute text-white text-sm text-opacity-40">
           <button

@@ -227,7 +227,7 @@ const InfoCard = ({ type }) => {
 
                 <Link to={btn.x} className="w-auto h-auto">
                   <Icon
-                    icon="simple-icons:x"
+                    icon="mdi:twitter"
                     className="border-none bg-transparent"
                   />
                 </Link>

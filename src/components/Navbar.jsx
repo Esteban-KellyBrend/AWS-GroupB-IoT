@@ -84,7 +84,7 @@ function Navbar() {
             </div>
           </div>
 
-          <section className="mt-20 flex justify-between items-center flex-col gap-1">
+          <section className="mt-20 flex justify-between items-center flex-col gap-1 z-50">
             {NavBtns.map((btn, index) => (
               <Link
                 to={btn.link}

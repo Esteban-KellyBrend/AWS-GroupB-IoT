@@ -71,7 +71,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="opacity-100 z-80 absolute flex flex-row group">
+    <div className="opacity-100 z-80 fixed flex flex-row group">
       <div
         onMouseEnter={() => setShowWow(false)}
         className="h-[100vh] w-[8vw] bg-transparent group hover:bg-black hover:w-[15vw] transition-all duration-200"

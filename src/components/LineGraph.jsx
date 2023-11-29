@@ -109,13 +109,13 @@ function LineGraph({ name, data, labels }) {
         </div>
         <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1 mt-3"
           style={{
-            width: `${(1350 / window.innerHeight) * 100}vh`,
+            width: `${(1250 / window.innerHeight) * 100}vh`,
             height: `${(170 / window.innerHeight) * 100}vh`,
             marginLeft: '150px',
           }}>
             
           <Line data={graphData} options={options} 
-          width={`${(1350 / window.innerHeight) * 100}vh`} 
+          width={`${(1250 / window.innerHeight) * 100}vh`} 
           height={`${(170 / window.innerHeight) * 100}vh`}></Line>
         </div>
       </section>

@@ -1,26 +1,30 @@
-import React from "react";
 import LineGraph from "../../components/LineGraph";
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display";
+import * as FirebaseHandler from '../../components/database/FirebaseHandler';
 
  /*
    *
    * HOURLY: 17 DATA POINTS
-   * WEEKLY: 7 DATA POINTS
+   * WEEKLY: 7 DATAs POINTS
    * 
    * by: Bins
    * 
    */
 
 
-const hourlyData = [8, 9, 7, 12.5, 12, 13, 5, 1, 3, 14, 2, 6, 8, 12, 6.5, 1, 6.6];
-const hourlyLabels = ["6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "1:00", "1:30", "2:00", "2:30"];
-
 const weeklyData = [10, 9, 7, 13, 1, 8, 16];
 const weeklyLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function WindSpeedStats() {
+
+  const LowestSpeed = FirebaseHandler.GetDataStatistics('averageWindSpeed','lowest')
+  const AverageSpeed = FirebaseHandler.GetDataStatistics('averageWindSpeed','average')
+  const HighestSpeed = FirebaseHandler.GetDataStatistics('averageWindSpeed','highest')
+  const hourlyData = FirebaseHandler.GetRealTimeDatas('averageWindSpeed');
+  const hourlyLabels = hourlyData.map(entry => entry.key);
+  const hourlyValues = hourlyData.map(entry => entry.data);  
 
   return (
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
@@ -29,15 +33,15 @@ function WindSpeedStats() {
         <Heading type={1} name={"WIND SPEED"} />
       </section>
 
-      <LineGraph data={hourlyData} labels={hourlyLabels} name={"TODAY"} />
+      <LineGraph data={hourlyValues} labels={hourlyLabels} name={"TODAY"} />
       <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} />
 
       <div className="flex flex-col items-center justify-center">
         <section className="flex flex-row gap-[10rem] mt-3 ">
           
-          <Display type={1} name={"Highest"} meas={"12.5"} unit={"kph"} />
-          <Display type={1} name={"Lowest"} meas={"1"} unit={"kph"} />
-          <Display type={1} name={"Average"} meas={"6.9"} unit={"kph"} />
+          <Display type={1} name={"Highest"} meas={HighestSpeed} unit={"kph"} />
+          <Display type={1} name={"Lowest"} meas={LowestSpeed} unit={"kph"} />
+          <Display type={1} name={"Average"} meas={AverageSpeed} unit={"kph"} />
         </section>
       </div>
 

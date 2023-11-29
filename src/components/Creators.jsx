@@ -124,7 +124,7 @@ function Creators() {
   ];
 
   return (
-    <div className=" transition-all duration-100">
+    <div className=" transition-all pl-[2vw] mt-[3vh] duration-100">
       <section className="flex max-w-[48vw]">
         <section className="flex flex-wrap gap-3 items-center">
           {MemberBtn.map((btn, index) => (
@@ -134,7 +134,7 @@ function Creators() {
           ))}
         </section>
 
-        <div className="border-2 border-white w-[36vw] h-[70vh] absolute -ml-5 rounded-3xl border-opacity-30 left-[60vw] overflow-hidden ">
+        <div className="border-2 border-white w-[36vw] h-[63vh] absolute -ml-5 rounded-3xl border-opacity-30 left-[60vw] overflow-hidden ">
           <div className="opacity-20">
             <div className="bg-gradient-to-r from-purple-500 to-transparent from-5% bg-opacity-5 w-full h-full absolute z-10" />
           </div>

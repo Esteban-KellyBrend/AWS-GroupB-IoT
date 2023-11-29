@@ -2,9 +2,10 @@ import React from 'react'
 
 function ProjectDesc() {
   return (
-    <div className=" transition-all duration-100">
-      <section className="mt-3 text-xl text-white font-light text-justify flex flex-col gap-4 indent-10 text-opacity-80 w-full flex-wrap pl-3 pr-8">
-        <p className='font-bold text-3xl indent-0'>PROJECT DESCRIPTION</p>
+    <div className=" transition-all duration-100 px-[5vw] mt-[3vh]">
+      <section className="w-full mt-3 text-lg text-white font-light flex gap-4 indent-10 text-opacity-80 flex-col  ">
+        <p className='font-bold text-3xl indent-0 pb-[1vh]'>PROJECT DESCRIPTION</p>
+        <article className='flex flex-col justify-center gap-4 text-justify items-center text-[16px]'>
           <p>
             Computer engineering students at Adamson University, in their
             graduating year, are working on an advanced project as part of their
@@ -17,6 +18,7 @@ function ProjectDesc() {
           <p>
           The Automatic Weather Station (AWS) is strategically located in the northern part of Metro Manila to provide accurate and localized weather data for this specific area. This data is crucial for various applications, including urban planning, disaster preparedness, and agriculture in the northern region.
           </p>
+          </article>
         </section>
     </div>
   )

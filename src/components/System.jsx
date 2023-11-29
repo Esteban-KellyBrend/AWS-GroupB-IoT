@@ -2,10 +2,11 @@ import React from "react";
 
 function System() {
   return (
-    <div className=" transition-all duration-100">
-      <section className="mt-3 text-xl text-white font-light text-justify flex flex-col gap-4 indent-10 text-opacity-80 w-full flex-wrap pl-3 pr-8">
-        <p className='font-bold text-3xl indent-0'>SYSTEM OVERVIEW</p>
-        <p>
+    <div className=" transition-all duration-100 px-[5vw] mt-[3vh]">
+      <section className="w-full mt-3 text-lg text-white font-light flex gap-4 indent-10 text-opacity-80 flex-col  ">
+        <p className='font-bold text-3xl indent-0 pb-[1vh]'>SYSTEM OVERVIEW</p>
+        <article className='flex flex-col justify-center gap-4 text-justify items-center'>
+          <p>
           The Automatic Weather System meticulously crafted by a group of
           innovative Computer Engineering students from Adamson University
           showcases a sophisticated blend of cutting-edge components,
@@ -27,9 +28,9 @@ function System() {
           Wind Vane and Anemometer, completing the ensemble. This amalgamation
           of high-caliber components showcases the students' dedication to
           creating a comprehensive and efficient weather monitoring system for a
-          connected world.
-        </p>
-      </section>
+          connected world.</p>
+          </article>
+        </section>
     </div>
   );
 }

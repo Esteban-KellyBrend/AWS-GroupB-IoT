@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import LineGraph from "../../components/LineGraph";
+import Trail from "../../components/Trail";
 
 function SolarIrradianceStats() {
   return (
@@ -8,6 +9,7 @@ function SolarIrradianceStats() {
       <Navbar />
 
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
+        <Trail />
         <Heading type={1} name={"Solar Irradiance"} />
       </section>
     </div>

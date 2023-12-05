@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display"
+import Trail from "../../components/Trail";
 
 function WindDirectionStats() {
   return (
@@ -8,6 +9,7 @@ function WindDirectionStats() {
       <Navbar />
 
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
+        <Trail />
         <Heading type={1} name={"WIND DIRECTION"} />
       </section>
       

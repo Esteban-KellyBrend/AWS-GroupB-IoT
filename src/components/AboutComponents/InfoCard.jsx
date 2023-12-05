@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Info = [
   {
@@ -170,7 +171,7 @@ const Info = [
     image:
       "https://scontent.fmnl4-5.fna.fbcdn.net/v/t1.15752-9/387477732_858270162454672_6316177058677256617_n.png?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeECiUYgb6Dk1eTKgyuNUIOG6mPgpNNFe6rqY-Ck00V7qnvL28OADDaJmRy3I9xkTAtAVvFwOOqptV-ojYJZ4lxA&_nc_ohc=MQthf8q0mbYAX8EIaO8&_nc_ht=scontent.fmnl4-5.fna&oh=03_AdT5PfaeWKD10LYT2gBTEyWSTLIGyavJ3_-ewka8rULD5w&oe=658C106B",
     name: "VILLASOR, Vince Kazer M.",
-    role: "Logistics & Software",
+    role: "Software & Logistics",
     grp: "7",
     contrib:
       "I wanna be the very best Like no one ever was To catch them is my real test To train them is my cause I will travel across the land Searching far and wide Teach Pokémon to understand The power that's inside (Pokémon    Gotta catch 'em all) It's you and me I know it's my destiny (Pokémon) Oh, you're my best friend In a world we must defend",
@@ -195,7 +196,7 @@ const InfoCard = ({ type }) => {
                 alt="Project Image"
               />
             </div>
-            
+
             <article className="ml-[16vw] h-[100%] z-50 text-white text-opacity-70 py-4 pr-6">
               <p className="font-bold text-md">NAME:</p>
               <p className="text-sm mb-1">{btn.name}</p>
@@ -239,12 +240,17 @@ const InfoCard = ({ type }) => {
                   />
                 </Link>
 
-                <Link to={btn.email} className="w-auto h-auto">
-                  <Icon
-                    icon="ic:outline-email"
-                    className="border-none bg-transparent"
-                  />
-                </Link>
+                <button className="w-auto h-auto group">
+                  <div className="text-xs text-white shadow-purple-700 absolute w-[12vh] h-[3vh]  bg-purple-800 bg-opacity-30 -mb-[5vh] rounded-2xl opacity-30 bottom-[2vh] -right-[1.5vw] border-2 hidden  group-hover:block">
+                  <p className="">Click to Copy</p>
+                  </div>
+                  <CopyToClipboard text={btn.email}>
+                    <Icon
+                      icon="ic:outline-email"
+                      className="border-none bg-transparent"
+                    />
+                  </CopyToClipboard>
+                </button>
               </section>
             </article>
           </div>

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import Display from "../components/Display";
-import Forecast from "../components/Forecast";
+import Forecast from "../components/DashboardComponent/Forecast";
 import Heading from "../components/Heading";
 import Navbar from "../components/Navbar";
-import Temperature from "../components/Temperature";
-import Time from "../components/Time";
+import Temperature from "../components/DashboardComponent/Temperature";
+import Time from "../components/DashboardComponent/Time";
 
 function Dashboard() {
   return (

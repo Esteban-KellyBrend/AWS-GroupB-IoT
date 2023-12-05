@@ -70,6 +70,7 @@ const router = createBrowserRouter([
     path: "About",
     element: <About />,
   },
+
  
 ]);
 

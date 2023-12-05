@@ -18,6 +18,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Try from './pages/Try';
 
 
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
   {
     path: "About",
     element: <About />,
+  },
+  {
+    path: "Try",
+    element: <Try />,
   },
 
  

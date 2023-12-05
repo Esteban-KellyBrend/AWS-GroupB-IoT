@@ -3,12 +3,14 @@ import Navbar from "../components/Navbar";
 import Heading from "../components/Heading";
 import Display from "../components/Display";
 import LineGraph from "../components/LineGraph";
+import Trail from "../components/Trail";
 
 function HWSettings() {
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
+        <Trail />
         <Heading type={1} name={"HARDWARE STATUS CONNECTIVITY"} />
         <section className="mt-5 mb-4 flex gap-[4.5rem]">
           <section className="flex">

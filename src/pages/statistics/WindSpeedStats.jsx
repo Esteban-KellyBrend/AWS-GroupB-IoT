@@ -4,6 +4,7 @@ import Heading from "../../components/Heading";
 import Display from "../../components/Display";
 import { useAllDataFromFirebase, useLimitedDataFromFirebase } from "../../components/database/FirebaseHandler";
 import { formatDataKeys, GetLowHighAveData } from "../../components/database/DataDisplayHandler";
+import Trail from "../../components/Trail";
 
  /*
    *
@@ -33,6 +34,7 @@ function WindSpeedStats() {
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
+        <Trail />
         <Heading type={1} name={"WIND SPEED"} />
       </section>
 

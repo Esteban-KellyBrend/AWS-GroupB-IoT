@@ -58,7 +58,8 @@ const Display = ({
         />
         <img
           src="https://scontent.fmnl4-1.fna.fbcdn.net/v/t1.15752-9/375754561_1356953538275639_4269922165700191771_n.png?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeEhxlsagpYNomRC_NWyOkZ3cr91fCS1lGdyv3V8JLWUZ0VBw_GU7SyghKinU03LbCMmUOPgrMCDGkLkmc8g3MOz&_nc_ohc=RnrL0C0tn1gAX8q_xu0&_nc_ht=scontent.fmnl4-1.fna&oh=03_AdRPIawjggMcWc2jvYH6swLo0Lb4JL-471qWnbYSveaJHQ&oe=6582DFB5"
-          className="w-[15%] absolute -mt-10 -rotate-[48deg]"
+          className="w-[15%] absolute -mt-10"
+          style={{ transform: `rotate(${-meas}deg)` }}
         />
         <div className=" flex flex-row text-white text-2xl w-full justify-center mt-[80%] group-hover:font-semibold">
           <p>{meas}</p>

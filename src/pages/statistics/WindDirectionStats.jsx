@@ -2,11 +2,11 @@ import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display"
 import Trail from "../../components/Trail";
-import { getCardinalDirection } from "../../components/database/DataDisplayHandler";
+import { getCardinalDirection, useMostRecentDataFromFirebase } from "../../components/database/DataDisplayHandler";
 
 function WindDirectionStats() {
 
-  const todayangle = 45;
+  const todayangle = useMostRecentDataFromFirebase("Winddirection");
   const todaydir = getCardinalDirection(todayangle)
 
   const weeklyangle = 124;

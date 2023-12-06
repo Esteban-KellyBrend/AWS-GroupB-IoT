@@ -5,7 +5,7 @@ import Heading from "../components/Heading";
 import Navbar from "../components/Navbar";
 import Temperature from "../components/DashboardComponent/Temperature";
 import Time from "../components/DashboardComponent/Time";
-import { useMostRecentDataFromFirebase } from "../components/database/DataDisplayHandler";
+import { useMostRecentDataFromFirebase, getCardinalDirection } from "../components/database/DataDisplayHandler";
 
 function Dashboard() {
 
@@ -16,6 +16,8 @@ function Dashboard() {
   const HeatIndex_data = useMostRecentDataFromFirebase("HeatIndex");
   const Temperature_data = useMostRecentDataFromFirebase("Temperature");
   const SolarIrradiance_data = useMostRecentDataFromFirebase("SolarIrradiance");
+  const WindDirection_data = useMostRecentDataFromFirebase("Winddirection");
+  const WindDirection = getCardinalDirection(WindDirection_data);
 
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
@@ -69,9 +71,9 @@ function Dashboard() {
           <Display
             type={3}
             name={"Wind Direction"}
-            meas={"48"}
+            meas={WindDirection_data}
             unit={"°"}
-            direction={" East of North"}
+            direction={WindDirection}
             className="z-0 relative"
           />
           </Link>

@@ -120,13 +120,11 @@ export const useWeeklyDataFromFirebase = (path) => {
     to serve as method to collect the entire data of a single day.
   */
   const getWeekStart = (dateKey) => {
-    // Convert dateKey (DDMMYYYY) to a JavaScript Date object
     const day = parseInt(dateKey.slice(6, 8), 10);
     const month = parseInt(dateKey.slice(4, 6), 10) - 1; // Months are zero-indexed
     const year = parseInt(dateKey.slice(0, 4), 10);
     const date = new Date(year, month, day);
 
-    // Get the week start in 'YYYYMMDD' format
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayOfWeek = daysOfWeek[date.getDay()];
 

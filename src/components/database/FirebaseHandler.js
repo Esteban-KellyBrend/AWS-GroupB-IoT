@@ -10,8 +10,7 @@ export const useAllDataFromFirebase = (path) => {
 
     const handleDataChange = (snapshot) => {
       if (snapshot.exists()) {
-        const dataArray = Object.entries(snapshot.val()).map(([key, value]) => ({ key, value }));
-        setData(dataArray);
+        setData(Object.entries(snapshot.val()).map(([key, value]) => ({ key, value })));
       } else {
         console.log("No data available");
         setData([]);

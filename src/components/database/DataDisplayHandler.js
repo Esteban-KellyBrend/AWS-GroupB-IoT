@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, onValue } from 'firebase/database';
 import { useAllDataFromFirebase } from "../../components/database/FirebaseHandler";
 
 /*
@@ -55,41 +54,20 @@ export const GetLowHighAveData = (values) => {
 
 /*
   Gets the current data using today's date.
-  
-  NOTE: I've decided to not use "useAllDataFromFirebase" as it is unecessary to
-  load every data for the current day data to ensure performance is optimal.
 */
 export const useTodayDataFromFirebase = (path) => {
-  const [data, setData] = useState([]);
+  const allData = useAllDataFromFirebase(path);
+  const [todayData, setTodayData] = useState([]);
 
   useEffect(() => {
-    const database = getDatabase();
-    const dataRef = ref(database, path);
+    const today = new Date();
+    const todayFormatted = `${today.getFullYear()}${(today.getMonth() + 1).toString().padStart(2, '0')}${today.getDate().toString().padStart(2, '0')}`;
 
-    const handleDataChange = (snapshot) => {
-      if (snapshot.exists()) {
-        const today = new Date();
-        const todayFormatted = `${today.getFullYear()}${(today.getMonth() + 1).toString().padStart(2, '0')}${today.getDate().toString().padStart(2, '0')}`;
+    const todayDataArray = allData.filter((item) => item.key.startsWith(todayFormatted));
+    setTodayData(todayDataArray);
+  }, [allData]);
 
-        const dataArray = Object.entries(snapshot.val())
-          .filter(([key]) => key.startsWith(todayFormatted))
-          .map(([key, value]) => ({ key, value }));
-
-        setData(dataArray);
-      } else {
-        console.log("No data available");
-        setData([]);
-      }
-    };
-
-    const unsubscribe = onValue(dataRef, handleDataChange);
-
-    return () => {
-      unsubscribe();
-    };
-  }, [path]);
-
-  return data;
+  return todayData;
 };
 
 /*
@@ -158,3 +136,28 @@ export const useWeeklyDataFromFirebase = (path) => {
   return weeklyData;
 };
 
+/*
+  get the most recent data based on date format.
+*/
+export const useMostRecentDataFromFirebase = (path) => {
+  const allData = useAllDataFromFirebase(path);
+  const [mostRecentData, setMostRecentData] = useState(null);
+
+  useEffect(() => {
+    if (allData.length > 0) {
+      // Find the most recent data by comparing date keys
+      let mostRecent = null;
+      allData.forEach((item) => {
+        if (!mostRecent || item.key > mostRecent.key) {
+          mostRecent = item;
+        }
+      });
+
+      setMostRecentData(mostRecent ? mostRecent.value : null);
+    } else {
+      setMostRecentData(null);
+    }
+  }, [allData]);
+
+  return mostRecentData;
+};

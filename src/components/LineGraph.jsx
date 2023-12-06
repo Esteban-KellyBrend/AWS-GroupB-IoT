@@ -28,7 +28,7 @@ ChartJS.register(
    * 
    */
 
-function LineGraph({ name, data, labels }) {
+function LineGraph({ name, data, labels, unit = '' }) {
   const graphData = {
     labels: labels,
     datasets: [{
@@ -91,7 +91,7 @@ function LineGraph({ name, data, labels }) {
         max: Math.ceil(Math.max(...data)),
         ticks: {
           stepSize: 1,
-          callback: (value) => Math.round(value) + ' kph', 
+          callback: (value) => Math.round(value) + " " + unit, 
           precision: 0, // Set precision to 0 to remove decimal places
         },
         grid: {

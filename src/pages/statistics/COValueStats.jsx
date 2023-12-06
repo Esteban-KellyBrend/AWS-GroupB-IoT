@@ -24,15 +24,15 @@ function COValueStats() {
         <Heading type={1} name={"WIND SPEED"} />
       </section>
 
-      <LineGraph data={datavalue} labels={filtereddatakey} name={"TODAY"} />
-      <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} />
+      <LineGraph data={datavalue} labels={filtereddatakey} name={"TODAY"} unit="ppm" />
+      <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} unit="ppm" />
 
       <div className="flex flex-col items-center justify-center">
         <section className="flex flex-row gap-[10rem] mt-3 ">
           
-          <Display type={1} name={"Highest"} meas={highestValue} unit={"kph"} />
-          <Display type={1} name={"Lowest"} meas={lowestValue} unit={"kph"} />
-          <Display type={1} name={"Average"} meas={averageValue} unit={"kph"} />
+          <Display type={1} name={"Highest"} meas={highestValue} unit={"ppm"} />
+          <Display type={1} name={"Lowest"} meas={lowestValue} unit={"ppm"} />
+          <Display type={1} name={"Average"} meas={averageValue} unit={"ppm"} />
         </section>
       </div>
 

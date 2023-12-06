@@ -24,8 +24,8 @@ function WindSpeedStats() {
         <Heading type={1} name={"WIND SPEED"} />
       </section>
 
-      <LineGraph data={datavalue} labels={filtereddatakey} name={"TODAY"} />
-      <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} />
+      <LineGraph data={datavalue} labels={filtereddatakey} name={"TODAY"} unit="kph" />
+      <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} unit="kph" />
 
       <div className="flex flex-col items-center justify-center">
         <section className="flex flex-row gap-[10rem] mt-3 ">

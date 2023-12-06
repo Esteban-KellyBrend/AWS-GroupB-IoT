@@ -6,8 +6,12 @@ import Navbar from "../components/Navbar";
 import Temperature from "../components/DashboardComponent/Temperature";
 import Time from "../components/DashboardComponent/Time";
 import Trail from "../components/Trail";
+import { useMostRecentDataFromFirebase } from "../components/database/DataDisplayHandler";
 
 function Dashboard() {
+
+  const windspeed_data = useMostRecentDataFromFirebase("Windspeed");
+
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
@@ -52,7 +56,7 @@ function Dashboard() {
               </Link>
 
               <Link to={"/WindSpeedStats"}>
-              <Display type={1} name={"Wind Speed"} meas={420} unit={"kph"} />
+              <Display type={1} name={"Wind Speed"} meas={windspeed_data} unit={"kph"} />
               </Link>
               
             </section>

@@ -87,16 +87,16 @@ function LineGraph({ name, data, labels }) {
 
       },
       y: {
-        min: Math.min(...data) - 1,
-        max: Math.max(...data) + 1,
+        min: Math.floor(Math.min(...data)),
+        max: Math.ceil(Math.max(...data)),
         ticks: {
           stepSize: 1,
-          callback: (value) => value + ' kph'
+          callback: (value) => Math.round(value) + ' kph', 
+          precision: 0, // Set precision to 0 to remove decimal places
         },
         grid: {
           borderDash: [20]
         }
-
       },
     },
   };

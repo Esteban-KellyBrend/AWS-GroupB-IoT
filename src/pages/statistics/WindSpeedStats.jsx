@@ -2,31 +2,18 @@ import LineGraph from "../../components/LineGraph";
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display";
-import { useAllDataFromFirebase, useLimitedDataFromFirebase } from "../../components/database/FirebaseHandler";
-import { formatDataKeys, GetLowHighAveData } from "../../components/database/DataDisplayHandler";
-import Trail from "../../components/Trail";
-
- /*
-   *
-   * HOURLY: 17 DATA POINTS
-   * WEEKLY: 7 DATAs POINTS
-   * 
-   * by: Bins
-   * 
-   */
-
-
-const hourlyValues = [10, 9, 7, 13, 1, 8, 16];
-const weeklyData = [10, 9, 7, 13, 1, 8, 16];
-const weeklyLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const hourlyLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase, useTodayDataFromFirebase } from "../../components/database/DataDisplayHandler";
 
 function WindSpeedStats() {
 
-  const data = useLimitedDataFromFirebase("averageWindSpeed", 17);
-  const datakey = data.map(entry => entry.key);
-  const datavalue  = data.map(entry => entry.value);
-  const filtereddatakey = formatDataKeys(datakey);
+  const datahr = useTodayDataFromFirebase("Windspeed");
+  const datakey = datahr.map(entry => entry.key);
+  const datavalue  = datahr.map(entry => entry.value);
+  const filtereddatakey = formatDataKeys(datakey, "HHMM", "12hour");
+
+  const datawk = useWeeklyDataFromFirebase("Windspeed");
+  const weeklyLabels = datawk.map(entry => entry.key);
+  const weeklyData = datawk.map(entry => entry.value);
 
   const [averageValue, lowestValue, highestValue] = GetLowHighAveData(datavalue)
 
@@ -34,7 +21,6 @@ function WindSpeedStats() {
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
-        <Trail />
         <Heading type={1} name={"WIND SPEED"} />
       </section>
 

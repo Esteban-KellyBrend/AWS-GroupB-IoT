@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { useAllDataFromFirebase } from "../../components/database/FirebaseHandler";
 
+/*
+  Formats the label using "key" type in firebase from "YYYYMMDD_HHMMSS" to 
+  a desire format such as DDMMYYYY or HHMM and has the ability to convert
+  to 12 hour clock or remain 24 hour
+*/
 export const formatDataKeys = (dataKeys, dateFormat, timeFormat = '24hour') => {
   return dataKeys.map(entry => {
     const parts = entry.split('_');
@@ -35,6 +40,10 @@ export const formatDataKeys = (dataKeys, dateFormat, timeFormat = '24hour') => {
   });
 };
 
+/*
+  Using the data type in firebase, computes the lowest, highest and average data
+  of the entire given array.
+*/
 export const GetLowHighAveData = (values) => {
   const lowestValue = Math.min(...values);
   const highestValue = Math.max(...values);
@@ -44,6 +53,12 @@ export const GetLowHighAveData = (values) => {
   return [roundedAverage, lowestValue, highestValue];
 };
 
+/*
+  Gets the current data using today's date.
+  
+  NOTE: I've decided to not use "useAllDataFromFirebase" as it is unecessary to
+  load every data for the current day data to ensure performance is optimal.
+*/
 export const useTodayDataFromFirebase = (path) => {
   const [data, setData] = useState([]);
 
@@ -77,6 +92,13 @@ export const useTodayDataFromFirebase = (path) => {
   return data;
 };
 
+/*
+  Using the function "useAllDataFromFirebase" in FirebaseHander.js, collects the entire
+  week data.
+
+  TODO: The only problem is that it starts on Monday rather than Sunday, still trying to find
+  a workaround.
+*/
 export const useWeeklyDataFromFirebase = (path) => {
   const dailyData = useAllDataFromFirebase(path);
   const [weeklyData, setWeeklyData] = useState([]);
@@ -115,6 +137,10 @@ export const useWeeklyDataFromFirebase = (path) => {
     return sum / values.length;
   };
 
+  /*
+    Internal function that formats the entire the date format within firebase
+    to serve as method to collect the entire data of a single day.
+  */
   const getWeekStart = (dateKey) => {
     // Convert dateKey (DDMMYYYY) to a JavaScript Date object
     const day = parseInt(dateKey.slice(6, 8), 10);

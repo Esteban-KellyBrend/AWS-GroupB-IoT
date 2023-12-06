@@ -161,3 +161,27 @@ export const useMostRecentDataFromFirebase = (path) => {
 
   return mostRecentData;
 };
+
+export const getCardinalDirection = (angle) => {
+  const adjustedAngle = (angle + 360) % 360;
+
+  if (adjustedAngle >= 337.5 || adjustedAngle < 22.5) {
+    return "East";
+  } else if (adjustedAngle >= 22.5 && adjustedAngle < 67.5) {
+    return "North of East";
+  } else if (adjustedAngle >= 67.5 && adjustedAngle < 112.5) {
+    return "North";
+  } else if (adjustedAngle >= 112.5 && adjustedAngle < 157.5) {
+    return "North of West";
+  } else if (adjustedAngle >= 157.5 && adjustedAngle < 202.5) {
+    return "West";
+  } else if (adjustedAngle >= 202.5 && adjustedAngle < 247.5) {
+    return "South of West";
+  } else if (adjustedAngle >= 247.5 && adjustedAngle < 292.5) {
+    return "South";
+  } else if (adjustedAngle >= 292.5 && adjustedAngle < 337.5) {
+    return "South of East";
+  } else {
+    return "Unknown Direction";
+  }
+};

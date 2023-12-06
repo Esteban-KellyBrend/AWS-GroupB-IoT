@@ -5,7 +5,6 @@ import Heading from "../components/Heading";
 import Navbar from "../components/Navbar";
 import Temperature from "../components/DashboardComponent/Temperature";
 import Time from "../components/DashboardComponent/Time";
-//import Trail from "../components/Trail";  BROKEN AF
 import { useMostRecentDataFromFirebase } from "../components/database/DataDisplayHandler";
 
 function Dashboard() {

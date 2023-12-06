@@ -2,8 +2,16 @@ import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display"
 import Trail from "../../components/Trail";
+import { getCardinalDirection } from "../../components/database/DataDisplayHandler";
 
 function WindDirectionStats() {
+
+  const todayangle = 45;
+  const todaydir = getCardinalDirection(todayangle)
+
+  const weeklyangle = 124;
+  const weeklydir = getCardinalDirection(weeklyangle)
+
   return (
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
@@ -18,19 +26,20 @@ function WindDirectionStats() {
       <Display
         type={8}
         name={"TODAY"}
-        meas={"48"}
+        meas={todayangle}
         unit={"°"}
-        direction={" East of North"}
+        direction={todaydir}
         className="z-0 relative"
       />
 
       <Display
         type={8}
         name={"THIS WEEK"}
-        meas={"48"}
+        meas={weeklyangle}
         unit={"°"}
-        direction={" East of North"}
+        direction={weeklydir}
         className="z-0 relative"
+        
       />
       </section>
       </div>

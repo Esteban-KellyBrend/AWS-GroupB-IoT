@@ -5,7 +5,6 @@ import Creators from "../components/AboutComponents/Creators";
 import ProjectDesc from "../components/AboutComponents/ProjectDesc";
 import System from "../components/AboutComponents/System";
 import NavNav from "../components/Nav/NavNav";
-import Trail from "../components/Trail";
 
 function About() {
   const [activeButton, setActiveButton] = useState(null);
@@ -21,7 +20,6 @@ function About() {
       </div>
 
       <section className="ml-[10vw] mr-[4vw] z-10 my-3">
-        <Trail />
         <Heading name={"ABOUT THE PROJECT"} />
         <section className="w-full h-full flex text-white text-2xl text-opacity-50 mt-3">
           <button

@@ -3,19 +3,25 @@ import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display";
 import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase, useTodayDataFromFirebase } from "../../components/database/DataDisplayHandler";
+import { useAllDataFromFirebase } from "../../components/database/FirebaseHandler";
 
 function PrecipitationStats() {
 
-  const datahr = useTodayDataFromFirebase("Precipitation");
+  const firebasefolder = "Precipitation";
+
+  const datahr = useTodayDataFromFirebase(firebasefolder);
   const datakey = datahr.map(entry => entry.key);
   const datavalue  = datahr.map(entry => entry.value);
   const filtereddatakey = formatDataKeys(datakey, "HHMM", "12hour");
 
-  const datawk = useWeeklyDataFromFirebase("Precipitation");
+  const datawk = useWeeklyDataFromFirebase(firebasefolder);
   const weeklyLabels = datawk.map(entry => entry.key);
   const weeklyData = datawk.map(entry => entry.value);
 
-  const [averageValue, lowestValue, highestValue] = GetLowHighAveData(datavalue)
+  const alldata = useAllDataFromFirebase(firebasefolder);
+  const alldataval = alldata.map(entry => entry.value);
+
+  const [averageValue, lowestValue, highestValue] = GetLowHighAveData(alldataval)
 
   return (
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">

@@ -9,13 +9,13 @@ import { useMostRecentDataFromFirebase, getCardinalDirection } from "../componen
 
 function Dashboard() {
 
-  const windspeed_data = useMostRecentDataFromFirebase("Windspeed");
-  const humidity_data = useMostRecentDataFromFirebase("Humidity");
-  const COValue_data = useMostRecentDataFromFirebase("COValue");
-  const Precipitation_data = useMostRecentDataFromFirebase("Precipitation");
+  const windspeed_data = useMostRecentDataFromFirebase("Wind Speed Sensor");
+  const humidity_data = useMostRecentDataFromFirebase("DHT22/Humidity");
+  const COValue_data = useMostRecentDataFromFirebase("MQ-7 Sensor");
+  const Precipitation_data = useMostRecentDataFromFirebase("Rainfall");
   const HeatIndex_data = useMostRecentDataFromFirebase("HeatIndex");
-  const Temperature_data = useMostRecentDataFromFirebase("Temperature");
-  const SolarIrradiance_data = useMostRecentDataFromFirebase("SolarIrradiance");
+  const Temperature_data = useMostRecentDataFromFirebase("DHT22/Temperature");
+  const SolarIrradiance_data = useMostRecentDataFromFirebase("Irradiance Sensor");
   const WindDirection_data = useMostRecentDataFromFirebase("Winddirection");
   const WindDirection = getCardinalDirection(WindDirection_data);
 

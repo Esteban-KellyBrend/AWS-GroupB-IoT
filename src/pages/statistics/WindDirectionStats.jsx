@@ -1,23 +1,24 @@
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display"
-import Trail from "../../components/Trail";
-import { getCardinalDirection, useMostRecentDataFromFirebase } from "../../components/database/DataDisplayHandler";
+import { getCardinalDirection, useMostRecentDataFromFirebase, GetLowHighAveData, useWeeklyDataFromFirebase } from "../../components/database/DataDisplayHandler";
 
 function WindDirectionStats() {
 
-  const todayangle = useMostRecentDataFromFirebase("Winddirection");
+  const database = "Winddirection";
+  const todayangle = useMostRecentDataFromFirebase(database);
   const todaydir = getCardinalDirection(todayangle)
 
-  const weeklyangle = 124;
-  const weeklydir = getCardinalDirection(weeklyangle)
+  const weeklyangle = useWeeklyDataFromFirebase(database);
+  const weeklyData = weeklyangle.map(entry => entry.value);
+  const [ave, low, high] = GetLowHighAveData(weeklyData);
+  const weeklydir = getCardinalDirection(ave);
 
   return (
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
       <Navbar />
 
       <section className="ml-[10vw] mr-[8vw] z-10 my-3">
-        <Trail />
         <Heading type={1} name={"WIND DIRECTION"} />
       </section>
       
@@ -34,8 +35,8 @@ function WindDirectionStats() {
 
       <Display
         type={8}
-        name={"THIS WEEK"}
-        meas={weeklyangle}
+        name={"WEEKLY"}
+        meas={ave}
         unit={"°"}
         direction={weeklydir}
         className="z-0 relative"

@@ -10,7 +10,7 @@ export const useAllDataFromFirebase = (path) => {
 
     const handleDataChange = (snapshot) => {
       if (snapshot.exists()) {
-        setData(Object.entries(snapshot.val()).map(([key, value]) => ({ key, value })));
+        setData(Object.entries(snapshot.val()).map(([key, value]) => ({ key, value })).reverse());
       } else {
         console.log("No data available");
         setData([]);
@@ -24,7 +24,7 @@ export const useAllDataFromFirebase = (path) => {
     };
   }, [path]);
 
-  return data;
+  return data.reverse();
 };
 
 

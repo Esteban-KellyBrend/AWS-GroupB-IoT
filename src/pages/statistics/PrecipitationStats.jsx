@@ -2,14 +2,14 @@ import LineGraph from "../../components/LineGraph";
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display";
-import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase, useTodayDataFromFirebase } from "../../components/database/DataDisplayHandler";
+import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase } from "../../components/database/DataDisplayHandler";
 import { useAllDataFromFirebase } from "../../components/database/FirebaseHandler";
 
 function PrecipitationStats() {
 
-  const firebasefolder = "Precipitation";
+  const firebasefolder = "Rainfall";
 
-  const datahr = useTodayDataFromFirebase(firebasefolder);
+  const datahr = useAllDataFromFirebase(firebasefolder);
   const datakey = datahr.map(entry => entry.key);
   const datavalue  = datahr.map(entry => entry.value);
   const filtereddatakey = formatDataKeys(datakey, "HHMM", "12hour");
@@ -18,10 +18,7 @@ function PrecipitationStats() {
   const weeklyLabels = datawk.map(entry => entry.key);
   const weeklyData = datawk.map(entry => entry.value);
 
-  const alldata = useAllDataFromFirebase(firebasefolder);
-  const alldataval = alldata.map(entry => entry.value);
-
-  const [averageValue, lowestValue, highestValue] = GetLowHighAveData(alldataval)
+  const [averageValue, lowestValue, highestValue] = GetLowHighAveData(datavalue)
 
   return (
     <div className="bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
@@ -30,8 +27,8 @@ function PrecipitationStats() {
         <Heading type={1} name={"PRECIPITATION"} />
       </section>
 
-      <LineGraph data={datavalue} labels={filtereddatakey} name={"TODAY"} unit="%" />
-      <LineGraph data={weeklyData} labels={weeklyLabels} name={"THIS WEEK"} unit="%" />
+      <LineGraph data={datavalue} labels={filtereddatakey} name={"HOURLY"} unit="%" dataLimit={14} />
+      <LineGraph data={weeklyData} labels={weeklyLabels} name={"WEEKLY"} unit="%" dataLimit={7} />
 
       <div className="flex flex-col items-center justify-center">
         <section className="flex flex-row gap-[10rem] mt-3 ">

@@ -28,18 +28,19 @@ ChartJS.register(
    * 
    */
 
-function LineGraph({ name, data, labels, unit = '' }) {
+function LineGraph({ name, data, labels, unit = '', dataLimit }) {
+  const limitedLabels = labels.slice(0, dataLimit).reverse();
   const graphData = {
-    labels: labels,
+    labels: limitedLabels,
     datasets: [{
       data: data,
       backgroundColor: (context) => {
         const bgColor = [
-          'rgba(255, 255, 255, 1)', // White
-          'rgba(255, 255, 255, 0.9)',
-          'rgba(255, 255, 255, 0.8)',
-          'rgba(192, 192, 192, 0.6)',
+          'rgba(255, 255, 255, 0.6)', // White
+          'rgba(255, 255, 255, 0.5)',
+          'rgba(255, 255, 255, 0.4)',
           'rgba(192, 192, 192, 0.3)',
+          'rgba(192, 192, 192, 0.2)',
           'rgba(192, 192, 192, 0)' // Fully transparent gray
         ];
 
@@ -60,7 +61,7 @@ function LineGraph({ name, data, labels, unit = '' }) {
       borderColor: 'white',
       borderWidth: 3,
       pointBorderColor: 'white',
-      pointBorderWidth: 1,
+      pointBorderWidth: 4,
       tension: 0.5,
       fill: true,
       pointHoverRadius: 4,
@@ -73,9 +74,12 @@ function LineGraph({ name, data, labels, unit = '' }) {
     plugins: {
       legend: false,
     },
+    
     layout: {
       padding: {
-        left: 12, 
+        left: 12,
+        top: 20,
+        bottom: 10,
       },
     },
     scales: {
@@ -87,12 +91,12 @@ function LineGraph({ name, data, labels, unit = '' }) {
 
       },
       y: {
-        min: Math.floor(Math.min(...data)),
-        max: Math.ceil(Math.max(...data)),
+        min: Math.floor(Math.min(...data)) - 1,
+        max: Math.ceil(Math.max(...data)) + 1,
         ticks: {
           stepSize: 1,
           callback: (value) => Math.round(value) + " " + unit, 
-          precision: 0, // Set precision to 0 to remove decimal places
+          precision: 2,
         },
         grid: {
           borderDash: [20]
@@ -105,7 +109,7 @@ function LineGraph({ name, data, labels, unit = '' }) {
     <div>
       <section className="mt-3">
         <div className="item-center">
-        <p className="text-white flex text-2xl text-opacity-70 ml-36 indent-2 font-bold">{name}</p>
+          <p className="text-white flex text-2xl text-opacity-70 ml-36 indent-2 font-bold">{name}</p>
         </div>
         <div className="rounded-xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex pt-1 mt-3"
           style={{
@@ -113,10 +117,11 @@ function LineGraph({ name, data, labels, unit = '' }) {
             height: `${(170 / window.innerHeight) * 100}vh`,
             marginLeft: '150px',
           }}>
-            
-          <Line data={graphData} options={options} 
-          width={`${(1250 / window.innerHeight) * 100}vh`} 
-          height={`${(170 / window.innerHeight) * 100}vh`}></Line>
+          {data.length > 0 && ( // Ensures that the data must loaded first before loading the graph for the transition effect
+          <Line data={graphData} options={options}
+            width={`${(1250 / window.innerHeight) * 100}vh`}
+            height={`${(170 / window.innerHeight) * 100}vh`}></Line>
+        )}
         </div>
       </section>
     </div>

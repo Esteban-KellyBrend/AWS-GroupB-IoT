@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
+import { database } from '../auth/firebase';
 
-export const useAllDataFromFirebase = (path) => {
+const useAllDataFromFirebase = (path) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const database = getDatabase();
     const dataRef = ref(database, path);
 
     const handleDataChange = (snapshot) => {
@@ -22,9 +22,8 @@ export const useAllDataFromFirebase = (path) => {
     return () => {
       unsubscribe();
     };
-  }, [path]);
-
-  return data.reverse();
+  }, [path]); 
+  return data;
 };
 
-
+export {useAllDataFromFirebase };

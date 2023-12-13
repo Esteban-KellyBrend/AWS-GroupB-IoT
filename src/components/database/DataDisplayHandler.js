@@ -9,7 +9,7 @@ import { useAllDataFromFirebase } from "../../components/database/FirebaseHandle
 export const formatDataKeys = (dataKeys, displayDate = false, timeFormat = '24hour') => {
   return dataKeys.map(entry => {
     const datePart = entry.slice(0, 8);
-    const year = datePart.slice(0, 4);
+    //const year = datePart.slice(0, 4);
     const month = datePart.slice(4, 6);
     const day = datePart.slice(6, 8);
     const formattedDate = `${month}/${day}`;
@@ -34,34 +34,14 @@ export const formatDataKeys = (dataKeys, displayDate = false, timeFormat = '24ho
 export const GetLowHighAveData = (values) => {
   const numericValues = values.map(value => Number(value)).filter(value => value !== 0);
   const count = numericValues.length;
-
   const sum = numericValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-
   const roundedAverage = count === 0 ? 0 : Number((sum / count).toFixed(2));
+  
   const lowestValue = count === 0 ? 0 : Number(Math.min(...numericValues).toFixed(2));
   const highestValue = count === 0 ? 0 : Number(Math.max(...numericValues).toFixed(2));
 
   return [roundedAverage, lowestValue, highestValue];
 };
-
-
-/* DECAPRECATED 
-//  Gets the current data using today's date.
-export const useTodayDataFromFirebase = (path) => {
-  const allData = useAllDataFromFirebase(path);
-  const [todayData, setTodayData] = useState([]);
-
-  useEffect(() => {
-    const today = new Date();
-    const todayFormatted = `${today.getFullYear()}${(today.getMonth() + 1).toString().padStart(2, '0')}${today.getDate().toString().padStart(2, '0')}`;
-
-    const todayDataArray = allData.filter((item) => item.key.startsWith(todayFormatted));
-    setTodayData(todayDataArray);
-  }, [allData]);
-
-  return todayData;
-};
-*/
 
 //  Using the function "useAllDataFromFirebase" in FirebaseHander.js, collects the entire week data.
 export const useWeeklyDataFromFirebase = (path) => {
@@ -71,11 +51,16 @@ export const useWeeklyDataFromFirebase = (path) => {
   useEffect(() => {
     const groupDataByWeek = () => {
       // Ensure all relevant data is fetched for the entire week
+      if (dailyData.length < 7) {
+        // Not enough data for weekly grouping
+        return;
+      }
+
       const last7DaysData = dailyData.slice(-7);
 
       const groupedData = last7DaysData.reduce((result, entry) => {
         const dateKey = entry.key.split('_')[0];
-        const weekStart = getWeekStart(dateKey); // Function to get the start of the week (Sunday)
+        const weekStart = getWeekStart(dateKey);
 
         if (!result[weekStart]) {
           result[weekStart] = [];
@@ -88,7 +73,7 @@ export const useWeeklyDataFromFirebase = (path) => {
 
       const formattedWeeklyData = Object.entries(groupedData).map(([weekStart, values]) => ({
         key: weekStart,
-        value: calculateAverage(values), // Calculate the average value for the week
+        value: calculateAverage(values),
       }));
 
       setWeeklyData(formattedWeeklyData);
@@ -98,20 +83,20 @@ export const useWeeklyDataFromFirebase = (path) => {
   }, [dailyData]);
 
   const calculateAverage = (values) => {
-    const nonZeroValues = values.filter(value => value !== 0); 
-    if (nonZeroValues.length === 0) {
-      return 0; 
+    const numericValues = values.map(value => Number(value)).filter(value => value !== 0);
+    console.log('numericValues:', numericValues);
+  
+    if (numericValues.length === 0) {
+      return NaN; 
     }
-    const sum = nonZeroValues.reduce((acc, value) => acc + value, 0);
-    return Number((sum / nonZeroValues.length).toFixed(2));
-  };
-  /*
-    Internal function that formats the entire date format within firebase
-    to serve as a method to collect the entire data of a single day.
-  */
+  
+    const sum = numericValues.reduce((acc, value) => acc + value, 0);
+    return Number((sum / numericValues.length).toFixed(2));
+  };  
+
   const getWeekStart = (dateKey) => {
     const day = parseInt(dateKey.slice(6, 8), 10);
-    const month = parseInt(dateKey.slice(4, 6), 10) - 1; // Months are zero-indexed
+    const month = parseInt(dateKey.slice(4, 6), 10) - 1;
     const year = parseInt(dateKey.slice(0, 4), 10);
     const date = new Date(year, month, day);
 

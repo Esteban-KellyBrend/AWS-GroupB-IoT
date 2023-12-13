@@ -36,7 +36,7 @@ export const GetLowHighAveData = (values) => {
   const count = numericValues.length;
   const sum = numericValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const roundedAverage = count === 0 ? 0 : Number((sum / count).toFixed(2));
-  
+
   const lowestValue = count === 0 ? 0 : Number(Math.min(...numericValues).toFixed(2));
   const highestValue = count === 0 ? 0 : Number(Math.max(...numericValues).toFixed(2));
 

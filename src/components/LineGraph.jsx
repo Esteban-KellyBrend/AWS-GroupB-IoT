@@ -29,11 +29,12 @@ ChartJS.register(
    */
 
 function LineGraph({ name, data, labels, unit = '', dataLimit }) {
-  const limitedLabels = labels.slice(0, dataLimit).reverse();
+  const reversedLabels = labels.slice(0, dataLimit).reverse(); // Reverse the labels array
+  const reversedData = data.slice(0, dataLimit).reverse(); // Reverse the data array
   const graphData = {
-    labels: limitedLabels,
+    labels: reversedLabels,
     datasets: [{
-      data: data,
+      data: reversedData,
       backgroundColor: (context) => {
         const bgColor = [
           'rgba(255, 255, 255, 0.6)', // White

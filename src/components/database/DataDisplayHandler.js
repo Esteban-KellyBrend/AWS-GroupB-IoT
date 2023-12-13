@@ -32,12 +32,14 @@ export const formatDataKeys = (dataKeys, displayDate = false, timeFormat = '24ho
 
 // Using the data type in firebase, computes the lowest, highest and average data of the entire given array.
 export const GetLowHighAveData = (values) => {
-  const sum = values.reduce((acc, val) => acc + val, 0);
-  const averageValue = sum / values.length;
-  const roundedAverage = Number(averageValue.toFixed(2)).toPrecision(3);
+  const numericValues = values.map(value => Number(value)).filter(value => value !== 0);
+  const count = numericValues.length;
 
-  const lowestValue = Number(Math.min(...values).toFixed(2));
-  const highestValue = Number(Math.max(...values).toFixed(2));
+  const sum = numericValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  const roundedAverage = count === 0 ? 0 : Number((sum / count).toFixed(2));
+  const lowestValue = count === 0 ? 0 : Number(Math.min(...numericValues).toFixed(2));
+  const highestValue = count === 0 ? 0 : Number(Math.max(...numericValues).toFixed(2));
 
   return [roundedAverage, lowestValue, highestValue];
 };
@@ -96,10 +98,13 @@ export const useWeeklyDataFromFirebase = (path) => {
   }, [dailyData]);
 
   const calculateAverage = (values) => {
-    const sum = values.reduce((acc, value) => acc + value, 0);
-    return sum / values.length;
+    const nonZeroValues = values.filter(value => value !== 0); 
+    if (nonZeroValues.length === 0) {
+      return 0; 
+    }
+    const sum = nonZeroValues.reduce((acc, value) => acc + value, 0);
+    return Number((sum / nonZeroValues.length).toFixed(2));
   };
-
   /*
     Internal function that formats the entire date format within firebase
     to serve as a method to collect the entire data of a single day.

@@ -51,31 +51,30 @@ export const useWeeklyDataFromFirebase = (path) => {
   useEffect(() => {
     const groupDataByWeek = () => {
       // Ensure all relevant data is fetched for the entire week
-      if (dailyData.length < 7) {
-        // Not enough data for weekly grouping
+      if (dailyData.length === 0) {
+        // No data available
+        setWeeklyData([]);
         return;
       }
-
-      const last7DaysData = dailyData.slice(-7);
-
-      const groupedData = last7DaysData.reduce((result, entry) => {
+    
+      const groupedData = dailyData.reduce((result, entry) => {
         const dateKey = entry.key.split('_')[0];
         const weekStart = getWeekStart(dateKey);
-
+    
         if (!result[weekStart]) {
           result[weekStart] = [];
         }
-
+    
         result[weekStart].push(entry.value);
-
+    
         return result;
       }, {});
-
+    
       const formattedWeeklyData = Object.entries(groupedData).map(([weekStart, values]) => ({
         key: weekStart,
         value: calculateAverage(values),
       }));
-
+    
       setWeeklyData(formattedWeeklyData);
     };
 

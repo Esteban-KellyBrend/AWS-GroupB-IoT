@@ -2,7 +2,7 @@ import LineGraph from "../../components/LineGraph";
 import Navbar from "../../components/Navbar";
 import Heading from "../../components/Heading";
 import Display from "../../components/Display";
-import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase } from "../../components/database/DataDisplayHandler";
+import { formatDataKeys, GetLowHighAveData, useWeeklyDataFromFirebase} from "../../components/database/DataDisplayHandler";
 import { useAllDataFromFirebase } from "../../components/database/FirebaseHandler";
 
 function TemperatureStats() {

@@ -1,49 +1,58 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Forecast() {
-  const WForecast = [
-    {
-      iconn: "material-symbols:sunny-outline",
-      Weather: "SUNNY",
-      Time: "7:00",
-    },
-    {
-      iconn: "material-symbols:sunny-outline",
-      Weather: "SUNNY",
-      Time: "7:30",
-    },
-    {
-      iconn: "fontisto:day-cloudy",
-      Weather: "PARTLY CLOUDY",
-      Time: "8:00",
-    },
-    {
-      iconn: "fluent-mdl2:cloudy",
-      Weather: "CLOUDY",
-      Time: "8:30",
-    },
-    {
-      iconn: "fluent-mdl2:cloudy",
-      Weather: "CLOUDY",
-      Time: "9:00",
-    },
-    {
-      iconn: "mingcute:cloud-windy-line",
-      Weather: "WINDY",
-      Time: "9:30",
-    },
-    {
-      iconn: "carbon:rain",
-      Weather: "RAINY",
-      Time: "10:00",
-    },
-    {
-      iconn: "raphael:thunder",
-      Weather: "STORMY",
-      Time: "10:30",
-    },
-  ];
+  const [weatherData, setWeatherData] = useState([]);
+
+  useEffect(() => {
+    const apiKey = '1d77e1c9f35b4b75583c841d9bce896e';
+    const city = 'CALOOCAN'; 
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+
+    axios.get(apiUrl)
+      .then(response => {
+        const forecastData = response.data.list;
+
+        const formattedData = forecastData.slice(0, 6).map(item => ({
+          iconn: getWeatherIcon(item.weather[0].main),
+          Weather: item.weather[0].main,
+          Time: formatTime(item.dt_txt),
+        }));
+
+        setWeatherData(formattedData);
+      })
+      .catch(error => {
+        console.error("Error fetching weather data:", error);
+      });
+  }, []);
+
+  const getWeatherIcon = (weather) => {
+    switch (weather) {
+      case 'Clear':
+        return "material-symbols:sunny-outline";
+      case 'Clouds':
+        return "fluent-mdl2:cloudy";
+      case 'Partly Cloudy':
+        return "fontisto:day-cloudy";
+      case 'Windy':
+        return "mingcute:cloud-windy-line";
+      case 'Rainy':
+        return "carbon:rain";
+      case 'Stormy':
+        return "raphael:thunder";
+      default:
+        return "default-icon";
+    }
+  };
+
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+  };
 
   return (
     <div className="mt-2 mb-4 group">
@@ -52,7 +61,7 @@ function Forecast() {
       </p>
       <div className="w-full h-[22vh] rounded-2xl border border-white border-opacity-30 bg-[#4D4D4D] bg-opacity-10 flex flex-row justify-center items-center group-hover:border-2  group-hover:bg-purple-700 group-hover:bg-opacity-10 group-hover:border-purple-900 group-hover:font-semibold">
         <section className="flex justify-around gap-1 p-1">
-          {WForecast.map((Weath, index) => (
+          {weatherData.map((Weath, index) => (
             <div key={index} className="w-[10vw] h-full rounded-xl flex flex-col justify-center items-center p-1">
               <Icon
                 icon={Weath.iconn}

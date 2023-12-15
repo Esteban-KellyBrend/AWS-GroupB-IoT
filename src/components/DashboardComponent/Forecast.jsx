@@ -37,7 +37,7 @@ function Forecast() {
         return "fontisto:day-cloudy";
       case 'Windy':
         return "mingcute:cloud-windy-line";
-      case 'Rainy':
+      case 'Rain':
         return "carbon:rain";
       case 'Stormy':
         return "raphael:thunder";

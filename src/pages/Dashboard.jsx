@@ -5,6 +5,7 @@ import Heading from "../components/Heading";
 import Navbar from "../components/Navbar";
 import Temperature from "../components/DashboardComponent/Temperature";
 import Time from "../components/DashboardComponent/Time";
+import Trail from "../components/Trail";
 import { useMostRecentDataFromFirebase, getCardinalDirection } from "../components/database/DataDisplayHandler";
 
 function Dashboard() {
@@ -21,6 +22,7 @@ function Dashboard() {
 
   return (
     <div className=" bg-gradient-to-tr to-[#431857] from-black from-30% bg-cover absolute h-screen w-screen">
+      <Trail/>
       <Navbar />
       <section className="ml-[10vw] mr-[4vw] z-10 my-3">
         <Heading type={1} name={"MAIN DASHBOARD"} />

@@ -14,7 +14,7 @@ function Forecast() {
       .then(response => {
         const forecastData = response.data.list;
 
-        const formattedData = forecastData.slice(0, 6).map(item => ({
+        const formattedData = forecastData.slice(0, 8).map(item => ({
           iconn: getWeatherIcon(item.weather[0].main),
           Weather: item.weather[0].main,
           Time: formatTime(item.dt_txt),
